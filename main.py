@@ -11,6 +11,12 @@ https://github.com/HeaTTheatR/LoginAppMVC
 https://en.wikipedia.org/wiki/Model–view–controller
 """
 
+from kivy.config import Config
+
+Config.set('graphics', 'width', 428)
+Config.set('graphics', 'height', 626)
+Config.set('graphics', 'resizable', 0)
+
 from kivymd.app import MDApp
 from kivymd.uix.screenmanager import MDScreenManager
 
@@ -18,14 +24,20 @@ from View.screens import screens
 
 
 class TodoApp(MDApp):
+    
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
         self.load_all_kv_files(self.directory)
         # This is the screen manager that will contain all the screens of your
         # application.
         self.manager_screens = MDScreenManager()
-        
+
     def build(self) -> MDScreenManager:
+        self.theme_cls.theme_style = 'Light'
+        self.theme_cls.primary_palette = 'Green'
+        
         self.generate_application_screens()
         return self.manager_screens
 
