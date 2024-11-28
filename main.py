@@ -16,6 +16,7 @@ from kivy.config import Config
 Config.set('graphics', 'width', 428)
 Config.set('graphics', 'height', 626)
 Config.set('graphics', 'resizable', 0)
+Config.set('graphics', 'maxfps', 120)
 
 from kivymd.app import MDApp
 from kivymd.uix.screenmanager import MDScreenManager
