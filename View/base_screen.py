@@ -43,3 +43,5 @@ class BaseScreenView(MDScreen, Observer):
         self.app = MDApp.get_running_app()
         # Adding a view class as observer.
         self.model.add_observer(self)
+
+        self.md_bg_color = self.theme_cls.surfaceColor
