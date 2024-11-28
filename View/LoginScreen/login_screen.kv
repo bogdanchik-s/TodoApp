@@ -1,1 +1,48 @@
 <LoginScreenView>
+
+    MDBoxLayout:
+        orientation: "vertical"
+        pos_hint: {'center_x': .5, 'center_y': .5}
+        adaptive_height: True
+        padding: dp(50)
+        spacing: dp(25)
+
+        MDLabel:
+            font_style: 'Display'
+            role: 'small'
+            halign: 'center'
+
+            text: "Авторизация"
+
+        MDTextField:
+            mode: "outlined"
+            font_style: 'Title'
+            role: 'large'
+
+            MDTextFieldHintText:
+                text: 'Логин'
+
+            MDTextFieldLeadingIcon:
+                icon: "account"
+
+        MDTextField:
+            mode: "outlined"
+            font_style: 'Title'
+            role: 'large'
+            
+            MDTextFieldHintText:
+                text: 'Пароль'
+
+            MDTextFieldLeadingIcon:
+                icon: "lock"
+
+        MDButton:
+            style: 'filled'
+            theme_width: 'Custom'
+            size_hint_x: 1
+
+            MDButtonText:
+                font_style: 'Title'
+                role: 'large'
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                text: 'Войти'
