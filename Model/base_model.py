@@ -5,11 +5,13 @@
 # model when they are notified (in this case, it is the `model_is_changed`
 # method). For this, observers must be descendants of an abstract class,
 # inheriting which, the `model_is_changed` method must be overridden.
+from .database import Database
 
 
 class BaseScreenModel:
     """Implements a base class for model modules."""
 
+    _db = Database()
     _observers = []
 
     def add_observer(self, observer) -> None:
