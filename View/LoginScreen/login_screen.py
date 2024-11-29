@@ -1,3 +1,6 @@
+import os
+
+from kivy.graphics.svg import Svg
 from View.base_screen import BaseScreenView
 
 

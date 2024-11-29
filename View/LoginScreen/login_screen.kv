@@ -1,17 +1,26 @@
+#:kivy 2.3.0
+
 <LoginScreenView>
 
     MDBoxLayout:
         orientation: "vertical"
-        pos_hint: {'center_x': .5, 'center_y': .5}
+        pos_hint: {'top': 1}
         adaptive_height: True
         padding: dp(50)
         spacing: dp(25)
+
+        Image:
+            pos_hint: {'center_x': .5}
+            size_hint: None, None
+            size: 125, 125
+            source: './assets/logo.png'
 
         MDLabel:
             font_style: 'Display'
             role: 'small'
             halign: 'center'
-
+            bold: True
+            adaptive_height: True
             text: "Авторизация"
 
         MDTextField:
@@ -46,3 +55,23 @@
                 role: 'large'
                 pos_hint: {'center_x': .5, 'center_y': .5}
                 text: 'Войти'
+    
+    MDBoxLayout:
+        orientation: "vertical"
+        pos_hint: {'center_x': .5, 'y': 0.05}
+        adaptive_height: True
+        spacing: dp(0)
+
+        MDLabel:
+            theme_text_color: 'Custom'
+            text_color: app.theme_cls.secondaryColor
+            adaptive_height: True
+            halign: 'center'
+            text: 'Автор: Захаров Богдан (44ИС-21)'
+        
+        MDLabel:
+            theme_text_color: 'Custom'
+            text_color: app.theme_cls.secondaryColor
+            adaptive_height: True
+            halign: 'center'
+            text: 'Версия: R1.0'
