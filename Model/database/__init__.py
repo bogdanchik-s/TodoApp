@@ -44,9 +44,6 @@ class Database:
 
                 params.append(uf_value)
 
-        print(sql)
-        print(params)
-
         return self._make_base_query(
             query_str=sql,
             query_params=params,
