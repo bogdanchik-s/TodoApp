@@ -1,4 +1,3 @@
-
 from View.LoginScreen.login_screen import LoginScreenView
 
 
@@ -16,3 +15,9 @@ class LoginScreenController:
 
     def get_view(self) -> LoginScreenView:
         return self.view
+
+    def set_user_data(self, key, value):
+        self.model.set_user_data(key, value)
+
+    def login_button_click(self):
+        self.model.get_user_data()

@@ -27,6 +27,7 @@
             mode: "outlined"
             font_style: 'Title'
             role: 'large'
+            on_text: root.controller.set_user_data('username', self.text)
 
             MDTextFieldHintText:
                 text: 'Логин'
@@ -38,6 +39,7 @@
             mode: "outlined"
             font_style: 'Title'
             role: 'large'
+            on_text: root.controller.set_user_data('password', self.text)
             
             MDTextFieldHintText:
                 text: 'Пароль'
@@ -49,6 +51,7 @@
             style: 'filled'
             theme_width: 'Custom'
             size_hint_x: 1
+            on_release: root.controller.login_button_click()
 
             MDButtonText:
                 font_style: 'Title'
