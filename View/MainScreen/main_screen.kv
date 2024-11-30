@@ -1,1 +1,18 @@
+#:kivy 2.3.0
+
 <MainScreenView>
+
+    MDScrollView:
+        do_scroll_x: False
+
+        MDList:
+            id: task_list
+            padding: dp(25)
+            spacing: dp(25)
+
+            MDLabel:
+                font_style: 'Display'
+                role: 'small'
+                adaptive_size: True
+                text: 'Дела'
+
