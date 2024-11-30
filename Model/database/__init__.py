@@ -1,6 +1,7 @@
 import sqlite3
 
 from .user import User
+from .task import Task
 
 
 class Database:
@@ -64,4 +65,12 @@ class Database:
         )
 
         if result is not None:
-            return model.__class__(**result)
+            if fetch_all:
+                models_list = []
+
+                for model_result in result:
+                    models_list.append(model.__class__(**model_result))
+                
+                return models_list
+            else:
+                return model.__class__(**result)
