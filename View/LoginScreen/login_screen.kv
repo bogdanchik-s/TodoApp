@@ -37,6 +37,8 @@
 
         MDTextField:
             mode: "outlined"
+            password: True
+            password_mask: '•'
             font_style: 'Title'
             role: 'large'
             on_text: root.controller.set_user_data('password', self.text)

@@ -22,6 +22,7 @@ from kivymd.app import MDApp
 from kivymd.uix.screenmanager import MDScreenManager
 
 from View.screens import screens
+from Model.database import User
 
 
 class TodoApp(MDApp):
@@ -34,6 +35,7 @@ class TodoApp(MDApp):
         # This is the screen manager that will contain all the screens of your
         # application.
         self.manager_screens = MDScreenManager()
+        self.current_user: User = None
 
     def build(self) -> MDScreenManager:
         self.theme_cls.theme_style = 'Light'

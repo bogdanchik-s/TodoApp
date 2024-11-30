@@ -51,6 +51,7 @@ class LoginScreenView(BaseScreenView):
         """
 
         if self.model.user.id is not None:
-            self.show_dialog(title='Успешно', text='Авторизация прошла успешно')
+            self.app.current_user = self.model.user
+            self.app.manager_screens.current = 'main screen'
         else:
             self.show_dialog(title='Ошибка', text='Неверный логин или пароль')
