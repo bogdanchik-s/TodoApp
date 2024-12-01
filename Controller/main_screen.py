@@ -16,3 +16,9 @@ class MainScreenController:
 
     def get_view(self) -> MainScreenView:
         return self.view
+
+    def load_tasks(self):
+        if self.view.app.current_user is not None:
+            self.model.get_tasks_list(
+                owner_id=self.view.app.current_user.id
+            )
