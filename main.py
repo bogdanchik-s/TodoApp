@@ -61,6 +61,8 @@ class TodoApp(MDApp):
             view.manager_screens = self.manager_screens
             view.name = name_screen
             self.manager_screens.add_widget(view)
+        
+        self.manager_screens.current = 'login screen'
 
 
 TodoApp().run()
