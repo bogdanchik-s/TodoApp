@@ -1,0 +1,93 @@
+#:kivy 2.3.0
+
+<TaskScreenView>
+
+    MDBoxLayout:
+        orientation: "vertical"
+        pos_hint: {'top': 1}
+        adaptive_height: True
+        spacing: dp(15)
+
+        MDTopAppBar:
+            id: actions_bar
+            type: "small"
+
+            MDTopAppBarLeadingButtonContainer:
+
+                MDActionTopAppBarButton:
+                    icon: "arrow-left"
+                    on_release: root.controller.back_button_click()
+
+            MDTopAppBarTitle:
+                text: 'Создание нового дела'
+        
+        MDBoxLayout:
+            orientation: "vertical"
+            adaptive_height: True
+            padding: dp(15), dp(0)
+            spacing: dp(35)
+            
+            MDTextField:
+                id: task_title
+                mode: "outlined"
+                font_style: 'Title'
+                role: 'large'
+                on_text: root.on_text_callback("title", self.text)
+
+                MDTextFieldHelperText:
+                    mode: 'persistent'
+                    text: 'Название дела'
+
+                MDTextFieldLeadingIcon:
+                    icon: "tag-text-outline"
+                
+                MDTextFieldMaxLengthText:
+                    max_text_length: 50
+
+            MDTextField:
+                id: task_description
+                mode: "outlined"
+                font_style: 'Title'
+                role: 'large'
+                multiline: True
+                on_text: root.on_text_callback('description', self.text)
+
+                MDTextFieldHelperText:
+                    mode: 'persistent'
+                    text: 'Описание'
+
+                MDTextFieldLeadingIcon:
+                    icon: "text"
+
+                MDTextFieldMaxLengthText:
+                    max_text_length: 255
+            
+            MDTextField:
+                id: task_expire_date
+                mode: "outlined"
+                font_style: 'Title'
+                role: 'large'
+                on_focus: root.show_date_picker(self.focus)
+                on_text: root.on_text_callback('expire_date', self.text)
+
+                MDTextFieldHelperText:
+                    mode: 'persistent'
+                    text: 'Срок выполнения (дедлайн)'
+                
+                MDTextFieldLeadingIcon:
+                    icon: "calendar"
+            
+            MDButton:
+                id: submit_button
+                style: 'filled'
+                theme_width: 'Custom'
+                size_hint_x: 1
+                pos_hint: {'bottom': 1}
+                on_release: root.controller.submit_button_click()
+
+                MDButtonText:
+                    font_style: 'Title'
+                    role: 'large'
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    text: 'Создать дело'
+                    disabled: True

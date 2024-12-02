@@ -5,14 +5,20 @@ from Model.main_screen import MainScreenModel
 from Controller.main_screen import MainScreenController
 from Model.login_screen import LoginScreenModel
 from Controller.login_screen import LoginScreenController
+from Model.task_screen import TaskScreenModel
+from Controller.task_screen import TaskScreenController
 
 screens = {
-    'login screen': {
-        'model': LoginScreenModel,
-        'controller': LoginScreenController,
+    'task screen': {
+        'model': TaskScreenModel,
+        'controller': TaskScreenController,
     },
     'main screen': {
         'model': MainScreenModel,
         'controller': MainScreenController,
+    },
+    'login screen': {
+        'model': LoginScreenModel,
+        'controller': LoginScreenController,
     },
 }
