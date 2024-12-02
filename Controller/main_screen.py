@@ -24,7 +24,7 @@ class MainScreenController:
             )
     
     def create_task(self):
-        pass
+        self.view.app.manager_screens.current = 'task screen'
 
     def edit_task(self):
         pass

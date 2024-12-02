@@ -20,6 +20,7 @@ class MainScreenView(BaseScreenView):
         self.edit_task_button = self.ids.actions_bar.ids.root_box.children[0].children[1]
         self.delete_task_button = self.ids.actions_bar.ids.root_box.children[0].children[0]
         
+        self.ids.tasks_list.clear_widgets()
         self.controller.load_tasks()
 
     def add_task(self, task: Task):
