@@ -24,8 +24,8 @@ class Database:
 
             if commit_needed:
                 self._db.commit()
-        except sqlite3.Error:
-            print('БД: Ошибка')
+        except sqlite3.Error as e:
+            print('БД: Ошибка:', e)
 
         cursor.close()
 
@@ -74,3 +74,23 @@ class Database:
                 return models_list
             else:
                 return model.__class__(**result)
+
+    def insert_data_by_model(self, model):
+        sql = f'insert into {model.__table__}'
+
+        data = {}
+
+        for model_field in model.__dataclass_fields__:
+            mf_value = getattr(model, model_field)
+
+            if mf_value is not None:
+                data[model_field] = mf_value
+
+        sql += f'({", ".join(k for k in data.keys())}) values ({", ".join(str(v) for v in data.values())})'
+
+        print(sql)
+
+        self._make_base_query(
+            query_str=sql,
+            commit_needed=True
+        )
