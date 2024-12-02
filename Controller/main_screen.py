@@ -22,3 +22,12 @@ class MainScreenController:
             self.model.get_tasks_list(
                 owner_id=self.view.app.current_user.id
             )
+    
+    def create_task(self):
+        pass
+
+    def edit_task(self):
+        pass
+
+    def delete_task(self):
+        pass

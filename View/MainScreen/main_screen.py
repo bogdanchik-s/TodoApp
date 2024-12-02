@@ -4,8 +4,9 @@ from kivymd.uix.list import (
     MDListItemHeadlineText,
     MDListItemSupportingText,
     MDListItemTertiaryText,
-    MDListItemTrailingIcon
+    MDListItemTrailingCheckbox
 )
+from kivymd.uix.selectioncontrol import MDCheckbox
 from kivy.metrics import dp
 
 from View.base_screen import BaseScreenView
@@ -13,7 +14,12 @@ from Model.database import Task
 
 
 class MainScreenView(BaseScreenView):
+
     def on_pre_enter(self):
+        self.add_task_button = self.ids.actions_bar.ids.root_box.children[0].children[2]
+        self.edit_task_button = self.ids.actions_bar.ids.root_box.children[0].children[1]
+        self.delete_task_button = self.ids.actions_bar.ids.root_box.children[0].children[0]
+        
         self.controller.load_tasks()
 
     def add_task(self, task: Task):
@@ -22,15 +28,24 @@ class MainScreenView(BaseScreenView):
             MDListItemHeadlineText(text=task.title),
             MDListItemSupportingText(text=task.description),
             MDListItemTertiaryText(text=f'Выполнить до: {task.expire_date}'),
-            MDListItemTrailingIcon(icon='trash-can-outline'),
+            MDListItemTrailingCheckbox(on_release=self.select_task),
             id=f'task_{task.id}',
-            on_release=self.delete_task
+            radius=5,
+            ripple_effect=False
         )
 
-        self.ids.task_list.add_widget(task_list_item)
+        self.ids.tasks_list.add_widget(task_list_item)
 
-    def delete_task(self, task_list_item: MDListItem):
-        self.ids.task_list.remove_widget(task_list_item)
+    def select_task(self, _):
+        selected_tasks_exist = False
+
+        for task_item in self.ids.tasks_list.children:
+            task_checkbox = task_item.children[0].children[0]
+
+            if task_checkbox.active:
+                selected_tasks_exist = True
+
+        self.delete_task_button.disabled = not selected_tasks_exist
 
     def model_is_changed(self) -> None:
         """
